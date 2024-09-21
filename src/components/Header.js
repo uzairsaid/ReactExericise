@@ -11,15 +11,11 @@ function Header(){
 
     return (
        <div>
-        <h1>{text}</h1>
-        <h1>You clicked {count} times</h1>
-
-
-        <button onClick={handleClick}> click me </button>
+            <h1>{text}</h1>
+            <h2>You clicked {count} times</h2>
+            <button onClick={handleClick}> click me </button>
        </div>
     );
 }
-
-
 
 export default Header
