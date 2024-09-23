@@ -42,7 +42,7 @@ function Header(){
         } catch (err) {
           setError(err);
         } finally {
-          setLoading(false); // Move this here to ensure it's called after fetching
+          setLoading(false); 
         }
       };
   
