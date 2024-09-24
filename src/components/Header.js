@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState ,useEffect} from "react";
+import { WeatherContext } from "../contexts/DataContext";
 
 function Header(){
+    const {setData} = useContext(WeatherContext);
     const text = "Welcome to meteo app";
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
-    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
@@ -23,7 +24,6 @@ function Header(){
     const handleSubmit = (e)=>{
         e.preventDefault();
         setLoading(true);
-        console.log(data);
 
     }
     const [error, setError] = useState(null);
@@ -49,7 +49,7 @@ function Header(){
       if (loading) {
         fetchData(); // Call fetchData when loading is true
       }
-    }, [loading, latitude, longitude, appid]); // Include appid in the dependencies
+    }, [loading, latitude, longitude, appid, setData]); // Include appid in the dependencies
   
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;

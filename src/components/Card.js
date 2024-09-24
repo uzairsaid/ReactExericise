@@ -1,5 +1,8 @@
 import PropTypes from "prop-types"
-function Card({title, content}){
+import { useContext } from "react"
+import { WeatherContext } from "../contexts/DataContext"
+function Card({title}){
+    const {data} = useContext(WeatherContext);
 
     return (
         <div className="card-container">
@@ -8,9 +11,11 @@ function Card({title, content}){
                 <h2>{title}</h2>
             </div>
 
-            <div className="card-body">
-                {content}
-            </div>
+        {data? (<div className="card-body">
+                {data.main.temp}
+            </div>)
+            : 
+            (<p>Meteo not available</p>)}
         </div>
     )
 
