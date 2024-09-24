@@ -7,7 +7,8 @@ function Header(){
     const text = "Welcome to meteo app";
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
-    const [loading, setLoading] = useState(false);
+    const {loading, setLoading} = useContext(WeatherContext);
+
 
     const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
 
@@ -39,6 +40,7 @@ function Header(){
           
           const responseData = await response.json();
           setData(responseData);
+          console.log(responseData);
         } catch (err) {
           setError(err);
         } finally {
@@ -49,9 +51,9 @@ function Header(){
       if (loading) {
         fetchData(); // Call fetchData when loading is true
       }
-    }, [loading, latitude, longitude, appid, setData]); // Include appid in the dependencies
+    }, [loading,setLoading, latitude, longitude, appid, setData]); // Include appid in the dependencies
   
-    if (loading) return <div>Loading...</div>;
+    
     if (error) return <div>Error: {error.message}</div>;
 
 
