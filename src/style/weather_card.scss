@@ -1,0 +1,34 @@
+$primary-color: rgba(70, 71, 70, 0.6);
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(100deg);
+    }
+    
+}
+
+.card-container {
+    box-shadow: 0 0.5rem 0.9rem $primary-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-left: 30%;
+    width: 40%;
+    border-radius: 5%;
+    padding: 1.5rem;
+   
+    .loading {
+        animation: spin 3s linear infinite;
+        color: blue;
+        border-radius: 50%;
+        height: 4rem;
+        width: 4rem;
+        border: 0.5rem solid rgba(blue, 0.3);
+        border-top: 0.5rem solid
+    }
+
+}

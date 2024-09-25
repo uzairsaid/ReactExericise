@@ -1,11 +1,12 @@
-import PropTypes from "prop-types"
-import { useContext } from "react"
-import { WeatherContext } from "../contexts/DataContext"
+import PropTypes from "prop-types";
+import { useContext } from "react";
+import { WeatherContext } from "../contexts/DataContext";
+import '../style/weather_card.scss';
 function Card({title}){
     const {data} = useContext(WeatherContext);
     const {loading} = useContext(WeatherContext);
 
-    if (loading) return <div>Loading...</div>;
+    // if (loading) return <div className="loading">Loading...</div>;
 
     return (
         <div className="card-container">
@@ -13,7 +14,7 @@ function Card({title}){
             <div className="card-title">
                 <h2>{title}</h2>
             </div>
-
+        {loading && <div className="loading"></div>}
         {data?
                 (<div className="card-body">
                 
@@ -39,7 +40,6 @@ function Card({title}){
 }
 Card.propTypes = {
     title: PropTypes.string,
-    // content : PropTypes.object.isRequired
 }
 
 export default Card

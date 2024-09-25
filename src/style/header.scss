@@ -21,7 +21,7 @@ $primary-color: rgba(70, 71, 70, 0.6);
 }
 .validation-btn {
     cursor: pointer;
-    outline: 0.1rem solid $primary-color;
+    font-size: 1rem;
     &:hover{
         background-color: $primary-color;
     }
