@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { useState ,useEffect} from "react";
 import { WeatherContext } from "../contexts/DataContext";
+import '../style/header.scss';
 
 function Header(){
     const {setData} = useContext(WeatherContext);
-    const text = "Welcome to meteo app";
+    const text = "Meteo app";
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
     const {loading, setLoading} = useContext(WeatherContext);
@@ -58,16 +59,21 @@ function Header(){
 
 
     return (
-       <div>
-            <h1>{text}</h1>
+       <div className="header">
+            <div className="header-title">
+                <h1>{text} <i className="fa-solid fa-cloud-sun-rain"></i> </h1>
+            </div>
             
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="latitude" className="latitude-input" onChange={handleLatitudeChange}/>
-                <input type="text" name="longitude" className="longitude-input" onChange={handleLongitudeChange}/>
-                <button type="submit">Check meteo </button>
-
-            </form>
-            
+            <div className="header-form">
+                <form onSubmit={handleSubmit}>
+                    <label>Latitude</label>
+                    <input type="text" name="latitude" className="latitude-input" onChange={handleLatitudeChange}/>
+                    <label>Longitude</label>
+                    <input type="text" name="longitude" className="longitude-input" onChange={handleLongitudeChange}/>
+                    <button type="submit" className="validation-btn">Check meteo </button>
+                </form>
+            </div>
+                 
        </div>
     );
 }

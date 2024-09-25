@@ -1,0 +1,29 @@
+$primary-color: rgba(70, 71, 70, 0.6);
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    padding: 2rem;
+    border-bottom: solid 0.2rem $primary-color;
+    height: 2rem;
+    .header-form{
+        margin-top: 1.5rem;
+    }
+}
+.longitude-input, .latitude-input {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.validation-btn , .longitude-input, .latitude-input{
+    padding: 0.5rem;
+}
+.validation-btn {
+    cursor: pointer;
+    outline: 0.1rem solid $primary-color;
+    &:hover{
+        background-color: $primary-color;
+    }
+}
+
