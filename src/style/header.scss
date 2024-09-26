@@ -7,6 +7,7 @@ $primary-color: rgba(70, 71, 70, 0.6);
     padding: 2rem;
     border-bottom: solid 0.2rem $primary-color;
     height: 2rem;
+    color: $primary-color;
     .header-form{
         margin-top: 1.5rem;
     }
@@ -26,4 +27,6 @@ $primary-color: rgba(70, 71, 70, 0.6);
         background-color: $primary-color;
     }
 }
+
+
 

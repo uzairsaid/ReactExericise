@@ -1,7 +1,8 @@
 
-import './App.css';
+import './App.scss';
 import Card from './components/Card';
 import Header from './components/Header'
+import SlideCard from './components/SlideCard';
 import { DataProvider } from './contexts/DataContext';
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <div>
         <DataProvider>
               <Header/>
-              <div>
+              <div className='container'>
+                <SlideCard/>
                 <Card title={info}/>
               </div>
         </DataProvider>

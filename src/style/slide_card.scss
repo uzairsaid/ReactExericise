@@ -1,0 +1,9 @@
+$primary-color: rgba(70, 71, 70, 0.6);
+.temperature , .country, .town{
+    font-weight: bold;
+    font-size: 4rem;
+    color: $primary-color;
+}
+.country, .town {
+    font-size: 3rem;
+}
