@@ -9,26 +9,32 @@ function Header(){
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
     const {loading, setLoading} = useContext(WeatherContext);
+    const [status, setStatus] = useState('empty');
 
 
     const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
 
     const handleLatitudeChange = (e)=>{  
-        setLatitude(e.target.value)
+        setLatitude(e.target.value);
+        setStatus('ok');
         
     }
 
     const handleLongitudeChange = (e)=>{  
-        setLongitude(e.target.value)
+        setLongitude(e.target.value);
+        setStatus('ok');
         
     }
 
     const handleSubmit = (e)=>{
         e.preventDefault();
+        setStatus('submitting');
         setLoading(true);
 
     }
     const [error, setError] = useState(null);
+
+   
 
     useEffect(() => {
       const fetchData = async () => {
@@ -46,6 +52,7 @@ function Header(){
           setError(err);
         } finally {
           setLoading(false); 
+          setStatus('empty');
         }
       };
   
@@ -67,10 +74,10 @@ function Header(){
             <div className="header-form">
                 <form onSubmit={handleSubmit}>
                     <label>Latitude</label>
-                    <input type="text" name="latitude" className="latitude-input" onChange={handleLatitudeChange}/>
+                    <input type="text" name="latitude" className="latitude-input" disabled={status==='submitting'} onChange={handleLatitudeChange}/>
                     <label>Longitude</label>
-                    <input type="text" name="longitude" className="longitude-input" onChange={handleLongitudeChange}/>
-                    <button type="submit" className="validation-btn">Check meteo </button>
+                    <input type="text" name="longitude" className="longitude-input" disabled={status==='submitting'} onChange={handleLongitudeChange}/>
+                    <button type="submit" className="validation-btn" disabled={status==='submitting' || status==='empty'}>Check meteo </button>
                 </form>
             </div>
                  

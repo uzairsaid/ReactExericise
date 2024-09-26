@@ -35,4 +35,16 @@ $primary-color: rgba(70, 71, 70, 0.6);
         color: $primary-color;
     }
 
+i {
+    color: $primary-color;
+}
+
+}
+
+.fa-sun {
+    color: rgba(248, 232, 9, 0.979);
+    font-size: 2rem;
+}
+.fa-cloud {
+    color: $primary-color;
 }
