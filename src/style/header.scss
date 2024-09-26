@@ -2,6 +2,7 @@ $primary-color: rgba(70, 71, 70, 0.6);
 .header {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     justify-items: center;
     padding: 2rem;
@@ -9,7 +10,11 @@ $primary-color: rgba(70, 71, 70, 0.6);
     height: 2rem;
     color: $primary-color;
     .header-form{
-        margin-top: 1.5rem;
+        margin-top: 1.5rem; 
+        form {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
     }
 }
 .longitude-input, .latitude-input {
@@ -28,5 +33,62 @@ $primary-color: rgba(70, 71, 70, 0.6);
     }
 }
 
+@media (max-width: 576px) {
+    .header {
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 10rem;
+        .header-form {
+            margin-top: 0.5rem;
+            form {
+                flex-direction: column;
+            } 
+        }
+    }
+
+    .longitude-input, .latitude-input {
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    
+}
+@media (min-width: 576px) and (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        height: 7rem;
+        .header-form {
+            margin-top: 0.5rem;
+            form {
+                flex-direction: row;
+            } 
+        }
+    }
+
+    .longitude-input, .latitude-input {
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .header {
+        flex-direction: row;
+        height: 4rem;
+        .header-form {
+            margin-top: 0.5rem;
+            form {
+                flex-direction: row;
+            } 
+        }
+    }
+
+    .longitude-input, .latitude-input {
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+}
 
 

@@ -73,14 +73,14 @@ function Header(){
             
             <div className="header-form">
                 <form onSubmit={handleSubmit}>
+                   
                     <label>Latitude</label>
                     <input type="text" name="latitude" className="latitude-input" disabled={status==='submitting'} onChange={handleLatitudeChange}/>
                     <label>Longitude</label>
                     <input type="text" name="longitude" className="longitude-input" disabled={status==='submitting'} onChange={handleLongitudeChange}/>
                     <button type="submit" className="validation-btn" disabled={status==='submitting' || status==='empty'}>Check meteo </button>
                 </form>
-            </div>
-                 
+            </div>   
        </div>
     );
 }

@@ -9,3 +9,30 @@
     flex-direction: row;
     justify-content: start;
 }
+
+@media (max-width: 576px) {
+    .container {
+        flex-direction: column;
+    }
+    
+}
+@media (min-width: 576px) and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .container {
+        flex-direction: row;
+    }
+    
+}
+
+@media (min-width: 992px) {
+    .container {
+        flex-direction: row;
+    }
+    
+}
