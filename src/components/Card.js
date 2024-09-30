@@ -19,7 +19,7 @@ function Card({title}){
                 (<div className="card-body">
                 
     
-                <p><i className="fa-solid fa-cloud"></i>Weather : {data.weather[0].main}{data.weather[0].main ==="Rain"?(<i className="fa-solid fa-rain"></i>):data.weather[0].main ==="Clouds"?(<i className="fa-solid fa-cloud"></i>):(<i className="fa-solid fa-sun"></i>)}</p>
+                <p><i className="fa-solid fa-cloud"></i>Weather : {data.weather[0].main}{data.weather[0].main ==="Rain"?(<i className="fa-solid fa-cloud-rain"></i>):data.weather[0].main ==="Clouds"?(<i className="fa-solid fa-cloud"></i>):(<i className="fa-solid fa-sun"></i>)}</p>
                 <p><i className="fa-solid fa-cloud"></i>Weather Description: {data.weather[0].description}</p>
                 <p><i className="fa-solid fa-wind"></i>Wind Speed: {data.wind.speed}</p>
                 <p> <i className="fa-solid fa-temperature-half"></i>Temperature: {(parseFloat(data.main.temp)-273.15).toFixed(1)}&deg;C </p>

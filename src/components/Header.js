@@ -14,17 +14,37 @@ function Header(){
     const [error, setError] = useState(null);
     const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
 
-    const handleLatitudeChange = (e)=>{  
-        setLatitude(e.target.value);
-        setStatus('ok');
-        
-    }
+    const [formErrors, setFormErrors] = useState({});
 
-    const handleLongitudeChange = (e)=>{  
-        setLongitude(e.target.value);
-        setStatus('ok');
-        
+   
+    const handleLatitudeChange = (e)=>{   
+      setLatitude(e.target.value);
+      if(!latitude){
+        setFormErrors({latitude:"Latitude is required"});
+      }
+      else if (!parseFloat(latitude)){
+        setFormErrors({latitude:"Latitude must be an float"});
+      }
+      else {
+        setStatus("ok");
+      }
+       
+  }
+
+  const handleLongitudeChange = (e)=>{   
+    setLongitude(e.target.value);
+    if(!longitude){
+      setFormErrors({longitude:"Longitude is required"});
     }
+    else if (!parseFloat(longitude)){
+      setFormErrors({latitude:"Longitude must be an float"});
+    }
+    else {
+      setStatus("ok");
+    }
+     
+}
+    
 
     async function fetchData(){
       try {
@@ -53,7 +73,6 @@ function Header(){
         setLoading(true);
         fetchData();
         
-
     }
     
     useEffect(()=>{
@@ -89,8 +108,10 @@ function Header(){
                    
                     <label>Latitude</label>
                     <input type="text" name="latitude" className="latitude-input" disabled={status==='submitting'} onChange={handleLatitudeChange}/>
+                    {formErrors&&<p style={{color:'red'}} >{formErrors.latitude}</p>}
                     <label>Longitude</label>
                     <input type="text" name="longitude" className="longitude-input" disabled={status==='submitting'} onChange={handleLongitudeChange}/>
+                    {formErrors&&<p style={{color:'red'}}>{formErrors.longitude}</p>}
                     <button type="submit" className="validation-btn" disabled={status==='submitting' || status==='empty'}>Check meteo </button>
                 </form>
             </div>   
