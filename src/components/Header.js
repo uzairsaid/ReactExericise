@@ -51,7 +51,7 @@ function Header(){
         e.preventDefault();
         setStatus('submitting');
         setLoading(true);
-        fetchData(); // Call fetchData when loading is true
+        fetchData();
         
 
     }
