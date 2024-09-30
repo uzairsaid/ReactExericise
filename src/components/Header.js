@@ -8,11 +8,10 @@ function Header(){
     const text = "Meteo app";
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
-    const {loading, setLoading} = useContext(WeatherContext);
+    const {setLoading} = useContext(WeatherContext);
     const [status, setStatus] = useState('empty');
     const [isOnline, setisOnline] = useState(navigator.onLine);
-
-
+    const [error, setError] = useState(null);
     const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
 
     const handleLatitudeChange = (e)=>{  
@@ -27,16 +26,36 @@ function Header(){
         
     }
 
+    async function fetchData(){
+      try {
+          console.log("data fecthing.....");
+          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${appid}`);
+          console.log(response)
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        
+        const responseData = await response.json();
+        setData(responseData);
+        console.log(responseData);
+      } catch (err) {
+        setError(err);
+
+      } finally {
+        setLoading(false); 
+        setStatus('empty');
+      }
+    };
+
     const handleSubmit = (e)=>{
         e.preventDefault();
         setStatus('submitting');
         setLoading(true);
+        fetchData(); // Call fetchData when loading is true
+        
 
     }
-    const [error, setError] = useState(null);
     
-
-   
     useEffect(()=>{
       function handleOnline(){
         setisOnline(true);
@@ -55,36 +74,8 @@ function Header(){
       
       }
     },[]);
-
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${appid}`);
-          
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          
-          const responseData = await response.json();
-          setData(responseData);
-          console.log(responseData);
-        } catch (err) {
-          setError(err);
-        } finally {
-          setLoading(false); 
-          setStatus('empty');
-        }
-      };
-  
-      if (loading) {
-        fetchData(); // Call fetchData when loading is true
-      }
-    }, [loading,setLoading, latitude, longitude, appid, setData]); // Include appid in the dependencies
-  
     
     if (error) return <div>Error: {error.message}</div>;
-    
-    console.log(isOnline);
     
     return (
        <div className="header">
