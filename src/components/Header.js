@@ -10,6 +10,7 @@ function Header(){
     const [longitude, setLongitude] = useState(0);
     const {loading, setLoading} = useContext(WeatherContext);
     const [status, setStatus] = useState('empty');
+    const [isOnline, setisOnline] = useState(navigator.onLine);
 
 
     const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
@@ -33,8 +34,27 @@ function Header(){
 
     }
     const [error, setError] = useState(null);
+    
 
    
+    useEffect(()=>{
+      function handleOnline(){
+        setisOnline(true);
+      }
+  
+      function  handleOffline(){
+        setisOnline(false);
+      } 
+
+      window.addEventListener('online', handleOnline);
+      window.addEventListener('offline', handleOffline);
+
+      return ()=>{
+        window.removeEventListener('online', handleOnline);
+        window.removeEventListener('offline', handleOffline);
+      
+      }
+    },[]);
 
     useEffect(() => {
       const fetchData = async () => {
@@ -63,12 +83,14 @@ function Header(){
   
     
     if (error) return <div>Error: {error.message}</div>;
-
-
+    
+    console.log(isOnline);
+    
     return (
        <div className="header">
             <div className="header-title">
                 <h1>{text} <i className="fa-solid fa-cloud-sun-rain"></i> </h1>
+                <p>{isOnline?"Online":"Offline"}</p>
             </div>
             
             <div className="header-form">
