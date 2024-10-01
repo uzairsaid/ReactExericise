@@ -3,58 +3,76 @@ import { useState ,useEffect} from "react";
 import { WeatherContext } from "../contexts/DataContext";
 import '../style/header.scss';
 
+
+const countriesLocalisation = [
+    {
+      name: "Burundi",
+      latitude: "-3.3731",
+      longitude: "29.9189"
+    },
+    {
+      name: "Rwanda",
+      latitude: "-1.9403",
+      longitude: "29.8739"
+    },
+    {
+      name: "DRC",
+      latitude: "-4.0383",
+      longitude: "21.7587"
+    },
+    {
+      name: "Kenya",
+      latitude: "-1.2864",
+      longitude: "36.8172"
+    },
+    {
+      name: "Ouganda",
+      latitude: "1.3733",
+      longitude: "32.2903"
+    },
+    {
+      name: "Tanzanie",
+      latitude: "-6.3660",
+      longitude: "34.8888"
+    },
+
+    {
+      name: "Somalia",
+      latitude: "5.1521",
+      longitude: "46.1996"
+    }
+];
+  
+
+
+
 function Header(){
     const {setData} = useContext(WeatherContext);
     const text = "Meteo app";
-    const [latitude, setLatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
+    const [selectedValue, setSelectedValue] = useState('');
     const {setLoading} = useContext(WeatherContext);
     const [status, setStatus] = useState('empty');
     const [isOnline, setisOnline] = useState(navigator.onLine);
     const [error, setError] = useState(null);
     const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
 
-    const [formErrors, setFormErrors] = useState({});
+ 
+    const handleSelectedValueChange = (e)=>{
+      setSelectedValue(e.target.value);
+      setStatus('ok');
+    }
 
-   
-    const handleLatitudeChange = (e)=>{
-      const newLatitude = e.target.value;   
-      setLatitude(newLatitude);
-      console.log(` latitude is ${newLatitude}`);
-      if(!newLatitude.trim()){
-        setStatus('empty');
-        setFormErrors({latitude:"Latitude is required"});
-      }
-      else if (!parseFloat(newLatitude)){
-        setFormErrors({latitude:"Latitude must be an float"});
-      }
-      else {
-        setStatus("ok");
-      }
-       
-  }
-
-  const handleLongitudeChange = (e)=>{  
-    let newLongitude = e.target.value; 
-    setLongitude(newLongitude);
-    if(!newLongitude.trim()){
-      setFormErrors({longitude:"Longitude is required"});
+    function getSelectedValueData(selectedValue){
+      const countryData = countriesLocalisation.find((obj)=>obj.name.toLowerCase()===selectedValue);
+      return countryData;
     }
-    else if (!parseFloat(newLongitude)){
-      setFormErrors({longitude:"Longitude must be an float"});
-    }
-    else {
-      setFormErrors({longitude: ''});
-      setStatus("ok");
-    }
-     
-}
-    
 
     async function fetchData(){
+      const countryData = getSelectedValueData(selectedValue);
       try {
           console.log("data fecthing.....");
-          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${appid}`);
+          setLoading(true);
+          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${countryData.latitude}&lon=${countryData.longitude}&appid=${appid}`);
           console.log(response)
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -71,15 +89,7 @@ function Header(){
         setStatus('empty');
       }
     };
-
-    const handleSubmit = (e)=>{
-        e.preventDefault();
-        setStatus('submitting');
-        setLoading(true);
-        fetchData();
-        
-    }
-    
+ 
     useEffect(()=>{
       function handleOnline(){
         setisOnline(true);
@@ -108,17 +118,18 @@ function Header(){
                 <p>{isOnline?"Online":"Offline"}</p>
             </div>
             
-            <div className="header-form">
-                <form onSubmit={handleSubmit}>
-                   
-                    <label>Latitude</label>
-                    <input type="text" name="latitude" className="latitude-input" disabled={status==='submitting'} onChange={handleLatitudeChange} on/>
-                    {formErrors&&<p style={{color:'red'}} >{formErrors.latitude}</p>}
-                    <label>Longitude</label>
-                    <input type="text" name="longitude" className="longitude-input" disabled={status==='submitting'} onChange={handleLongitudeChange}/>
-                    {formErrors&&<p style={{color:'red'}}>{formErrors.longitude}</p>}
-                    <button type="submit" className="validation-btn" disabled={status==='submitting' || status==='empty'}>Check meteo </button>
-                </form>
+            <div className="header-select">
+                    <select onChange={handleSelectedValueChange}>
+                          <option value=""></option>
+                          <option value="burundi">Burundi</option>
+                          <option value="rwanda">Rwanda</option>
+                          <option value="tanzania">Tanzania</option>
+                          <option value="drc">DRC</option>
+                          <option value="ouganda">Ouganda</option>
+                          <option value="kenya">Kenya</option>
+                          <option value="somalia">Somalia</option>
+                    </select>
+                    <button type="button" className="validation-btn" disabled={status==='empty'} onClick={fetchData}>Check meteo </button>
             </div>   
        </div>
     );
