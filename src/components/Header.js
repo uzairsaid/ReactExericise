@@ -6,8 +6,8 @@ import '../style/header.scss';
 function Header(){
     const {setData} = useContext(WeatherContext);
     const text = "Meteo app";
-    const [latitude, setLatitude] = useState(0);
-    const [longitude, setLongitude] = useState(0);
+    const [latitude, setLatitude] = useState('');
+    const [longitude, setLongitude] = useState('');
     const {setLoading} = useContext(WeatherContext);
     const [status, setStatus] = useState('empty');
     const [isOnline, setisOnline] = useState(navigator.onLine);
@@ -17,12 +17,15 @@ function Header(){
     const [formErrors, setFormErrors] = useState({});
 
    
-    const handleLatitudeChange = (e)=>{   
-      setLatitude(e.target.value);
-      if(!latitude){
+    const handleLatitudeChange = (e)=>{
+      const newLatitude = e.target.value;   
+      setLatitude(newLatitude);
+      console.log(` latitude is ${newLatitude}`);
+      if(!newLatitude.trim()){
+        setStatus('empty');
         setFormErrors({latitude:"Latitude is required"});
       }
-      else if (!parseFloat(latitude)){
+      else if (!parseFloat(newLatitude)){
         setFormErrors({latitude:"Latitude must be an float"});
       }
       else {
@@ -31,15 +34,17 @@ function Header(){
        
   }
 
-  const handleLongitudeChange = (e)=>{   
-    setLongitude(e.target.value);
-    if(!longitude){
+  const handleLongitudeChange = (e)=>{  
+    let newLongitude = e.target.value; 
+    setLongitude(newLongitude);
+    if(!newLongitude.trim()){
       setFormErrors({longitude:"Longitude is required"});
     }
-    else if (!parseFloat(longitude)){
-      setFormErrors({latitude:"Longitude must be an float"});
+    else if (!parseFloat(newLongitude)){
+      setFormErrors({longitude:"Longitude must be an float"});
     }
     else {
+      setFormErrors({longitude: ''});
       setStatus("ok");
     }
      
@@ -107,7 +112,7 @@ function Header(){
                 <form onSubmit={handleSubmit}>
                    
                     <label>Latitude</label>
-                    <input type="text" name="latitude" className="latitude-input" disabled={status==='submitting'} onChange={handleLatitudeChange}/>
+                    <input type="text" name="latitude" className="latitude-input" disabled={status==='submitting'} onChange={handleLatitudeChange} on/>
                     {formErrors&&<p style={{color:'red'}} >{formErrors.latitude}</p>}
                     <label>Longitude</label>
                     <input type="text" name="longitude" className="longitude-input" disabled={status==='submitting'} onChange={handleLongitudeChange}/>
