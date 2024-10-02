@@ -31,7 +31,7 @@ const countriesLocalisation = [
       longitude: "32.2903"
     },
     {
-      name: "Tanzanie",
+      name: "Tanzania",
       latitude: "-6.3660",
       longitude: "34.8888"
     },
@@ -118,8 +118,8 @@ function Header(){
                 <p>{isOnline?"Online":"Offline"}</p>
             </div>
             
-            <div className="header-select">
-                    <select onChange={handleSelectedValueChange}>
+            <div className="header-search">
+                    <select onChange={handleSelectedValueChange} className="country-select">
                           <option value=""></option>
                           <option value="burundi">Burundi</option>
                           <option value="rwanda">Rwanda</option>
