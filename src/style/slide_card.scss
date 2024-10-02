@@ -1,11 +1,20 @@
-$primary-color: rgba(70, 71, 70, 0.6);
-.temperature , .country, .town{
+$primary-color: rgba(17, 226, 17, 0.6);
+$secondary-color: rgba(70, 71, 70, 0.6);
+.temperature{
     font-weight: bold;
     font-size: 4rem;
-    color: $primary-color;
+    color: black;
+    padding: 0.5rem 3rem;
 }
 .country, .town {
     font-size: 3rem;
+    color: $secondary-color;
+    padding: 0.5rem 3rem;
+
+}
+i {
+    margin-right: 1rem;
+    color: $primary-color;
 }
 
 
