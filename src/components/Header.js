@@ -54,6 +54,7 @@ function Header(){
     const [status, setStatus] = useState('empty');
     const [isOnline, setisOnline] = useState(navigator.onLine);
     const [error, setError] = useState(null);
+    const [time, setTime] = useState(new Date().toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'}));
     const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
 
  
@@ -108,6 +109,13 @@ function Header(){
       
       }
     },[]);
+
+    useEffect(()=>{
+      setInterval(()=>{setTime(new Date().toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'}));}, 60000);
+      return ()=> {
+        clearInterval(setTime);
+      }
+    },[]);
     
     if (error) return <div>Error: {error.message}</div>;
     
@@ -116,6 +124,10 @@ function Header(){
             <div className="header-title">
                 <h1>{text} <i className="fa-solid fa-cloud-sun-rain"></i> </h1>
                 <p>{isOnline?"Online":"Offline"}</p>
+            </div>
+
+            <div className="current-time">
+                <h2>{time}</h2>
             </div>
             
             <div className="header-search">
