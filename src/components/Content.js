@@ -7,11 +7,9 @@ function Content(){
     return(
         
         <div className='content-card'>
-            <div className='content-img'>
-                <img src={contentImage} alt='content-picture'/>
-            </div>
-
             <div className='content-body'>
+                <img src={contentImage} alt='content-picture'/>
+            
                     <p className='content-paragraph'>
                     Stay one step ahead of the weather with MeteoApp, 
                     your ultimate weather companion! Whether you’re planning a weekend getaway, 
