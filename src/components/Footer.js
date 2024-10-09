@@ -7,8 +7,8 @@ function Footer(){
         <div className="footer">
             <div className="footer-content"> 
                 <div className="footer-description">
+                <h3>Meteo App</h3>
                     <p>
-                        <span className='app-name'>Meteo App</span> <br/>
                         Meteo app is web application which help us to know the situation of meteo
                         in Burundi, DRC,Kenya, Ouganda, Tanzania, Somalia and Rwanda 
                     </p>
@@ -16,6 +16,7 @@ function Footer(){
                 </div>
 
                 <div className="links">
+                <h3>Links</h3>
                     <p>
                         Contact us
                     </p>
@@ -23,6 +24,7 @@ function Footer(){
                 </div>
 
                 <div className="social-media">
+                    <h3>Community</h3>
                     <p>
                         <i className="fa-solid fa-envelope"></i> E-mail : meteapp@gmail.com
                     </p>
@@ -39,7 +41,7 @@ function Footer(){
                     </p>
 
                     <p>
-                        <i className="fa-brands fa-whatsapp"></i> Whatsapp : +257 62883939
+                        <i className="fa-brands fa-whatsapp"></i> Whatsapp : +257 62 88 39 39
                     </p>
 
                 </div>
