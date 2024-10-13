@@ -1,79 +1,73 @@
-@import './slide_card';
-
+@import "./slide_card";
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    100% {
-        transform: rotate(100deg);
-    }
-    
+  100% {
+    transform: rotate(100deg);
+  }
 }
 
 .card-container {
-    box-shadow: 0 0.5rem 0.9rem $secondary-color;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 4rem;
-    margin-left: 1%;
-    width: 40%;
-    border-radius: 5%;
-    padding: 1.5rem;
-   
-    .loading {
-        animation: spin 0.5s linear infinite;
-        color: $primary-color;
-        border-radius: 50%;
-        height: 4rem;
-        width: 4rem;
-        border: 0.5rem solid rgba($primary-color, 0.3);
-        border-top: 0.5rem solid;
-        
-    }
-    .card-title {
-        font-weight: bold;
-        color: black;
-    }
-    .card-body{
-        padding: 0.1rem 1rem;
-    }
-    .card-body p {
-        margin: 0.6rem;
-    }
+  box-shadow: 0 0.5rem 0.9rem $secondary-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 4rem;
+  margin-left: 1%;
+  width: 40%;
+  border-radius: 5%;
+  padding: 1.5rem;
+  align-items: center;
 
-i {
+  .loading {
+    animation: spin 0.5s linear infinite;
     color: $primary-color;
-}
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    border: 0.5rem solid rgba($primary-color, 0.3);
+    border-top: 0.5rem solid;
+  }
+  .card-title {
+    font-weight: bold;
+    color: black;
+  }
+  .card-body {
+    padding: 0.1rem 1rem;
+  }
+  .card-body p {
+    margin: 0.6rem;
+  }
 
+  i {
+    color: $primary-color;
+  }
 }
 
 .fa-sun {
-    color: rgba(248, 232, 9, 0.979);
-    font-size: 2rem;
+  color: rgba(248, 232, 9, 0.979);
+  font-size: 2rem;
 }
 .fa-cloud {
-    color: $primary-color;
+  color: $primary-color;
 }
 
 @media (max-width: 576px) {
-    .card-title {
-        font-size: 1rem;
-    }
-    
+  .card-title {
+    font-size: 1rem;
+  }
 }
 @media (min-width: 576px) and (max-width: 768px) {
-    .card-title {
-        font-size: 1rem;
-    }
-    
-    
+  .card-title {
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
-    .card-title {
-        font-size: 2rem;
-    }
+  .card-title {
+    font-size: 2rem;
+  }
 }

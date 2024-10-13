@@ -15,7 +15,7 @@ function Content(){
               
                     <p className='content-paragraph'>
                     Stay one step ahead of the weather with MeteoApp, 
-                    your ultimate weather companion! Whether you’re planning a weekend getaway, 
+                    your ultimate weather companion! Whether you're planning a weekend getaway, 
                     heading out for a morning run, or just curious about the day ahead, 
                     MeteoApp provides you with accurate, real-time weather updates and forecasts tailored to your location.
                     </p>
