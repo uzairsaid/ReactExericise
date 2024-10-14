@@ -230,7 +230,6 @@ function Header() {
       </div>
 
       <div className="menu-div">
-        {/* <h2>{time}</h2> */}
         <ul className="menus">
           <li>
             <button onClick={handleMenuClick} name="Burundi">
@@ -322,12 +321,24 @@ function Header() {
               </ul>
             )}
           </li>
-          <li>Rwanda</li>
-          <li>Tanzania</li>
-          <li>DRC</li>
-          <li>Ouganda</li>
-          <li>Kenya</li>
-          <li>Somalia</li>
+          <li>
+            <button name="Rwanda">Rwanda</button>
+          </li>
+          <li>
+            <button name="Tanzania">Tanzania</button>
+          </li>
+          <li>
+            <button name="DRC">DRC</button>
+          </li>
+          <li>
+            <button name="Ouganda">Ouganda</button>
+          </li>
+          <li>
+            <button name="Kenya">Kenya</button>
+          </li>
+          <li>
+            <button name="Somalia">Somalia</button>
+          </li>
         </ul>
       </div>
     </div>
