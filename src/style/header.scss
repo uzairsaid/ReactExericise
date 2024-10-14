@@ -20,6 +20,11 @@
       list-style-type: none;
       display: flex;
       justify-content: space-between;
+      .submenus {
+        overflow-y: auto;
+        max-height: 7rem;
+        border: 0.1rem solid $secondary-color;
+      }
     }
 
     li ul {
