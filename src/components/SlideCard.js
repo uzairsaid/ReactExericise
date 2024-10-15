@@ -7,11 +7,16 @@ function SlideCard() {
   const { loading } = useContext(WeatherContext);
   return (
     <div className="card-container">
+      {/* before fecthing data */}
       {loading && <div className="loading"></div>}
-      {data ? (
+
+      {/* after first data fecthing*/}
+
+      {data && loading ? (
+        ""
+      ) : data ? (
         <div className="card-body">
           <p className="temperature">
-            {" "}
             <i className="fa-solid fa-temperature-half icon"></i>
             {(parseFloat(data.main.temp) - 273.15).toFixed(1)}&deg;C{" "}
           </p>

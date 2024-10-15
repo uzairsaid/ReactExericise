@@ -127,19 +127,11 @@ function Header() {
   const { setData } = useContext(WeatherContext);
   const text = "Meteo app";
   const { setLoading } = useContext(WeatherContext);
-  const [status, setStatus] = useState("empty");
   const [isOnline, setisOnline] = useState(navigator.onLine);
   const [error, setError] = useState(null);
   const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
   const [isSubmenuOPen, setIsSubmenuOPen] = useState(false);
   const [country, setCountry] = useState("");
-
-  function getCountryData(country) {
-    const countryData = countriesLocalisation.find(
-      (obj) => obj.name.toLowerCase() === country
-    );
-    return countryData;
-  }
 
   // on country click
   const handleMenuClick = (e) => {
@@ -177,7 +169,6 @@ function Header() {
         setError(err);
       } finally {
         setLoading(false);
-        setStatus("empty");
       }
     };
 

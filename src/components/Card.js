@@ -14,7 +14,9 @@ function Card({ title }) {
         <h2>{title}</h2>
       </div>
       {loading && <div className="loading"></div>}
-      {data ? (
+      {data && loading ? (
+        ""
+      ) : data ? (
         <div className="card-body">
           <p>
             <i className="fa-solid fa-cloud"></i>Weather :{" "}
@@ -40,7 +42,6 @@ function Card({ title }) {
             {(parseFloat(data.main.temp) - 273.15).toFixed(1)}&deg;C
           </p>
           <p>
-            {" "}
             <i className="fa-solid fa-temperature-low"></i> Minimum temperature:{" "}
             {(parseFloat(data.main.temp_min) - 273.15).toFixed(1)}&deg;C
           </p>
