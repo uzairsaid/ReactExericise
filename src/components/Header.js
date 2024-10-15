@@ -6,7 +6,6 @@ import "../style/header.scss";
 const countriesLocalisation = [
   {
     name: "Burundi",
-
     provinces: [
       {
         provinceName: "Mairie",
@@ -92,8 +91,33 @@ const countriesLocalisation = [
   },
   {
     name: "Rwanda",
-    latitude: "-1.9403",
-    longitude: "29.8739",
+    provinces: [
+      {
+        provinceName: "Kigali",
+        latitude: "-1.943889",
+        longitude: "30.059444",
+      },
+      {
+        provinceName: "Amajyaruguru",
+        latitude: "-1.580969",
+        longitude: "29.926977",
+      },
+      {
+        provinceName: "Amajyepfo",
+        latitude: "-2.33333",
+        longitude: "29.6667",
+      },
+      {
+        provinceName: "Iburasirazuba",
+        latitude: "-1.7500",
+        longitude: "30.5000",
+      },
+      {
+        provinceName: "Iburengerazuba",
+        latitude: "-2.379905",
+        longitude: "29.2015345",
+      },
+    ],
   },
   {
     name: "DRC",
@@ -215,7 +239,7 @@ function Header() {
               Burundi
             </button>
 
-            {isSubmenuOPen && (
+            {isSubmenuOPen && country === "Burundi" && (
               <ul className="submenus">
                 <li>
                   <button
@@ -365,9 +389,62 @@ function Header() {
             )}
           </li>
           <li>
-            <button name="Rwanda" className="button-menu">
+            <button
+              name="Rwanda"
+              className="button-menu"
+              onClick={handleMenuClick}
+            >
               Rwanda
             </button>
+            {isSubmenuOPen && country === "Rwanda" && (
+              <ul className="submenus">
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Kigali"
+                    className="button-submenu"
+                  >
+                    Kigali
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Amajyaruguru"
+                    className="button-submenu"
+                  >
+                    Amajyaruguru
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Amajyepfo"
+                    className="button-submenu"
+                  >
+                    Amajyepfo
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Iburasirazuba"
+                    className="button-submenu"
+                  >
+                    Iburasirazuba
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Iburengerazuba"
+                    className="button-submenu"
+                  >
+                    Iburengerazuba
+                  </button>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <button name="Tanzania" className="button-menu">
