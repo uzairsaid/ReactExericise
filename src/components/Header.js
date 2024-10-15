@@ -50,18 +50,18 @@ const countriesLocalisation = [
       },
       {
         provinceName: "Cankuzo",
-        latitude: -3.7346,
-        longitude: 30.2384,
+        latitude: -3.2196819,
+        longitude: 30.5466187,
       },
       {
         provinceName: "Karusi",
-        latitude: -3.5221,
-        longitude: 29.7901,
+        latitude: -3.100096,
+        longitude: 30.163019,
       },
       {
         provinceName: "Ruyigi",
-        latitude: -3.561,
-        longitude: 30.3905,
+        latitude: -3.4750027,
+        longitude: 30.2483881,
       },
       {
         provinceName: "Mwaro",
@@ -70,13 +70,13 @@ const countriesLocalisation = [
       },
       {
         provinceName: "Cibitoke",
-        latitude: -3.418,
-        longitude: 29.0448,
+        latitude: -2.8102897,
+        longitude: 29.1855785,
       },
       {
         provinceName: "Bubanza",
-        latitude: -3.38,
-        longitude: 29.5262,
+        latitude: -3.083377,
+        longitude: 29.393463,
       },
       {
         provinceName: "Rutana",
@@ -85,8 +85,8 @@ const countriesLocalisation = [
       },
       {
         provinceName: "Muyinga",
-        latitude: -2.8584,
-        longitude: 30.4554,
+        latitude: -2.85,
+        longitude: 30.3333333,
       },
     ],
   },

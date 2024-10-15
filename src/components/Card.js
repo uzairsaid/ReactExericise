@@ -37,7 +37,6 @@ function Card({ title }) {
             <i className="fa-solid fa-wind"></i>Wind Speed: {data.wind.speed}
           </p>
           <p>
-            {" "}
             <i className="fa-solid fa-temperature-half"></i>Temperature:{" "}
             {(parseFloat(data.main.temp) - 273.15).toFixed(1)}&deg;C
           </p>
