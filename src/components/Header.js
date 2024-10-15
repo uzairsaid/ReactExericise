@@ -130,9 +130,6 @@ function Header() {
   const [status, setStatus] = useState("empty");
   const [isOnline, setisOnline] = useState(navigator.onLine);
   const [error, setError] = useState(null);
-  const [time, setTime] = useState(
-    new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-  );
   const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
   const [isSubmenuOPen, setIsSubmenuOPen] = useState(false);
   const [country, setCountry] = useState("");
@@ -150,6 +147,7 @@ function Header() {
     setCountry(selectedCountry);
     setIsSubmenuOPen(true);
   };
+
   const handleSubMenuClick = (e) => {
     const selectedProvince = e.target.name;
     const countryData = countriesLocalisation.find(
@@ -158,12 +156,12 @@ function Header() {
     const provData = countryData.provinces.find(
       (obj) => obj.provinceName === selectedProvince
     );
-    console.log(selectedProvince);
 
     const fetchData = async () => {
       try {
         console.log("data fecthing.....");
         setLoading(true);
+        setIsSubmenuOPen(false);
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${provData.latitude}&lon=${provData.longitude}&appid=${appid}`
         );
@@ -204,20 +202,6 @@ function Header() {
     };
   }, []);
 
-  useEffect(() => {
-    setInterval(() => {
-      setTime(
-        new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        })
-      );
-    }, 60000);
-    return () => {
-      clearInterval(setTime);
-    };
-  }, []);
-
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -232,89 +216,157 @@ function Header() {
       <div className="menu-div">
         <ul className="menus">
           <li>
-            <button onClick={handleMenuClick} name="Burundi">
+            <button
+              onClick={handleMenuClick}
+              name="Burundi"
+              className="button-menu"
+            >
               Burundi
             </button>
 
             {isSubmenuOPen && (
               <ul className="submenus">
                 <li>
-                  <button onClick={handleSubMenuClick} name="Bubanza">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Bubanza"
+                    className="button-submenu"
+                  >
                     Bubanza
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Bujumbura Rural">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Bujumbura Rural"
+                    className="button-submenu"
+                  >
                     Bujumbura Rural
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Bururi">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Bururi"
+                    className="button-submenu"
+                  >
                     Bururi
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Cankuzo">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Cankuzo"
+                    className="button-submenu"
+                  >
                     Cankuzo
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Cibitoke">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Cibitoke"
+                    className="button-submenu"
+                  >
                     Cibitoke
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Gitega">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Gitega"
+                    className="button-submenu"
+                  >
                     Gitega
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Kayanza">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Kayanza"
+                    className="button-submenu"
+                  >
                     Kayanza
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Karusi">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Karusi"
+                    className="button-submenu"
+                  >
                     Karusi
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Mairie">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Mairie"
+                    className="button-submenu"
+                  >
                     Mairie
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Makamba">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Makamba"
+                    className="button-submenu"
+                  >
                     Makamba
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Mwaro">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Mwaro"
+                    className="button-submenu"
+                  >
                     Mwaro
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Muyinga">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Muyinga"
+                    className="button-submenu"
+                  >
                     Muyinga
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Muramvya">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Muramvya"
+                    className="button-submenu"
+                  >
                     Muramvya
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Ngozi">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Ngozi"
+                    className="button-submenu"
+                  >
                     Ngozi
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Rutana">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Rutana"
+                    className="button-submenu"
+                  >
                     Rutana
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleSubMenuClick} name="Ruyigi">
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Ruyigi"
+                    className="button-submenu"
+                  >
                     Ruyigi
                   </button>
                 </li>
@@ -322,22 +374,34 @@ function Header() {
             )}
           </li>
           <li>
-            <button name="Rwanda">Rwanda</button>
+            <button name="Rwanda" className="button-menu">
+              Rwanda
+            </button>
           </li>
           <li>
-            <button name="Tanzania">Tanzania</button>
+            <button name="Tanzania" className="button-menu">
+              Tanzania
+            </button>
           </li>
           <li>
-            <button name="DRC">DRC</button>
+            <button name="DRC" className="button-menu">
+              DRC
+            </button>
           </li>
           <li>
-            <button name="Ouganda">Ouganda</button>
+            <button name="Ouganda" className="button-menu">
+              Ouganda
+            </button>
           </li>
           <li>
-            <button name="Kenya">Kenya</button>
+            <button name="Kenya" className="button-menu">
+              Kenya
+            </button>
           </li>
           <li>
-            <button name="Somalia">Somalia</button>
+            <button name="Somalia" className="button-menu">
+              Somalia
+            </button>
           </li>
         </ul>
       </div>
