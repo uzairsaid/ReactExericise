@@ -165,6 +165,7 @@ function Header() {
   const [error, setError] = useState(null);
   const appid = "dde0a4dcefbdab3fac4077a9e9c86a05";
   const [isSubmenuOPen, setIsSubmenuOPen] = useState(false);
+  const [isMenuOPen, setIsMenuOPen] = useState(false);
   const [country, setCountry] = useState("");
 
   // on country click
@@ -188,6 +189,8 @@ function Header() {
         console.log("data fecthing.....");
         setLoading(true);
         setIsSubmenuOPen(false);
+        setIsMenuOPen(false);
+
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${provData.latitude}&lon=${provData.longitude}&appid=${appid}`
         );
@@ -239,7 +242,10 @@ function Header() {
       </div>
 
       <div className="menu-div">
-        <ul className="menus">
+        <div className="toggle-menu" onClick={() => setIsMenuOPen(!isMenuOPen)}>
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <ul className={`menus ${isMenuOPen ? "show" : ""}`}>
           <li>
             <button
               onClick={handleMenuClick}
