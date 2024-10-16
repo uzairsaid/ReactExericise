@@ -87,6 +87,16 @@ const countriesLocalisation = [
         latitude: -2.85,
         longitude: 30.3333333,
       },
+      {
+        provinceName: "Kirundo",
+        latitude: -2.584837,
+        longitude: 30.096129,
+      },
+      {
+        provinceName: "Rumonge",
+        latitude: -3.973145,
+        longitude: 29.4382459,
+      },
     ],
   },
   {
@@ -316,6 +326,16 @@ function Header() {
                 <li>
                   <button
                     onClick={handleSubMenuClick}
+                    name="Kirundo"
+                    className="button-submenu"
+                  >
+                    Kirundo
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
                     name="Mairie"
                     className="button-submenu"
                   >
@@ -367,6 +387,16 @@ function Header() {
                     Ngozi
                   </button>
                 </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Rumonge"
+                    className="button-submenu"
+                  >
+                    Rumonge
+                  </button>
+                </li>
+
                 <li>
                   <button
                     onClick={handleSubMenuClick}
