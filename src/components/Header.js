@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { WeatherContext } from "../contexts/DataContext";
 import "../style/header.scss";
+import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
+import Signup from "../components/Signup";
 
 const countriesLocalisation = [
   {
@@ -508,6 +510,15 @@ function Header() {
             </button>
           </li>
         </ul>
+        <Router>
+          <Link to={"/signup"}>
+            Signup<i className="fa-solid fa-right-to-bracket"></i>
+          </Link>
+
+          <Routes>
+            <Route path="/signup" element={Signup} />
+          </Routes>
+        </Router>
       </div>
     </div>
   );
