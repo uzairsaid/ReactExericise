@@ -1,22 +1,25 @@
 import "./App.scss";
-import Card from "./components/Card";
-import Content from "./components/Content";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import SlideCard from "./components/SlideCard";
+import Signup from "./components/Signup";
 import { DataProvider } from "./contexts/DataContext";
+import Home from "./components/Home";
+import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 
 function App() {
-  const info = "Weather information";
   return (
     <div>
       <DataProvider>
         <Header />
-        <div className="container">
-          <SlideCard />
-          <Card title={info} />
-        </div>
-        <Content />
+        <Router>
+          <Link to={"/signup"}>
+            Signup<i className="fa-solid fa-right-to-bracket"></i>
+          </Link>
+          <Routes>
+            <Route path="/signup" Component={Signup} />
+            <Route path="/" Component={Home} />
+          </Routes>
+        </Router>
         <Footer />
       </DataProvider>
     </div>
