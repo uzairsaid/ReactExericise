@@ -1,0 +1,48 @@
+@import "./slide_card";
+
+.card-title {
+  color: $secondary-color;
+  margin-bottom: 0.7rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.card {
+  box-shadow: 0 0.5rem 0.9rem $secondary-color;
+  width: 40%;
+  margin-left: 25%;
+  justify-items: start;
+  padding: 2rem;
+}
+
+.card-body form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  div {
+    margin-bottom: 0.7rem;
+    button {
+      font-size: 2rem;
+      padding: 0.2rem 10rem;
+      border-radius: 4rem;
+      color: $secondary-color;
+      border: none;
+      &:hover {
+        border: 0.1rem $primary-color solid;
+        cursor: pointer;
+        color: white;
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+div label {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  font-weight: normal;
+}
+
+div input {
+  font-size: 1.5rem;
+}

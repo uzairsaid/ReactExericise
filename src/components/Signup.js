@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../style/signup.scss";
 
 function Signup() {
   const [userName, setUserName] = useState("");
@@ -37,6 +38,7 @@ function Signup() {
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              autoComplete="false"
             />
           </div>
           <div>
@@ -58,7 +60,7 @@ function Signup() {
             />
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button type="submit">Signup</button>
           </div>
         </form>
       </div>
