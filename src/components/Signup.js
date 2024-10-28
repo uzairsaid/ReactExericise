@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../style/signup.scss";
 import { useForm } from "react-hook-form";
+import { Value } from "sass";
 
 function Signup() {
   // const [userName, setUserName] = useState("");
@@ -13,8 +14,7 @@ function Signup() {
     formState: { errors },
   } = useForm();
 
-  function onSubmit(e) {
-    e.preventDefault();
+  function onSubmit() {
     alert("bonjpour");
     console.log("ca marche");
   }
@@ -41,7 +41,13 @@ function Signup() {
             <label>E mail</label>
             <input
               type="email"
-              {...register("email", { required: "E mail is required" })}
+              {...register("email", {
+                required: "E mail is required",
+                pattern: {
+                  value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+                  message: "Put valid e mail",
+                },
+              })}
             />
             {errors.email && <p className="errors">{errors.email.message}</p>}
           </div>
