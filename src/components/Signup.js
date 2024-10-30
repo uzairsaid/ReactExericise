@@ -1,13 +1,7 @@
-import { useState } from "react";
 import "../style/signup.scss";
 import { useForm } from "react-hook-form";
-import { Value } from "sass";
 
 function Signup() {
-  // const [userName, setUserName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confPassword, setConfPassword] = useState("");
   const {
     register,
     handleSubmit,
@@ -31,7 +25,14 @@ function Signup() {
 
             <input
               type="text"
-              {...register("username", { required: "Username is required" })}
+              {...register("username", {
+                required: "Username is required",
+                pattern: {
+                  value: /^[a-zA-Z\s]+$/,
+                  message:
+                    "User name must not contain digit or special characters",
+                },
+              })}
             />
             {errors.username && (
               <p className="errors">{errors.username.message}</p>
@@ -40,12 +41,12 @@ function Signup() {
           <div>
             <label>E mail</label>
             <input
-              type="email"
+              type="text"
               {...register("email", {
                 required: "E mail is required",
                 pattern: {
                   value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
-                  message: "Put valid e mail",
+                  message: "Enter the valid e mail",
                 },
               })}
             />
@@ -57,6 +58,20 @@ function Signup() {
               type="password"
               {...register("password", {
                 required: "Password is required",
+                pattern: {
+                  value: /^[A-Za-z0-9!@#$%^&*+?]+$/,
+                  message:
+                    "Password must not contain space,curry braces, or parantheses ",
+                },
+                minLength: {
+                  value: 8,
+                  message: "Password must between 8 and 16 characters",
+                },
+
+                maxLength: {
+                  value: 16,
+                  message: "Password must between 8 and 16 characters",
+                },
               })}
             />
             {errors.password && (
@@ -70,6 +85,20 @@ function Signup() {
               type="password"
               {...register("confPassword", {
                 required: "Password confirmation  is required",
+                pattern: {
+                  value: /^[A-Za-z0-9!@#$%^&*+?]+$/,
+                  message:
+                    "Password must not contain space,curry braces, or parantheses ",
+                },
+                minLength: {
+                  value: 8,
+                  message: "Password must between 8 and 16 characters",
+                },
+
+                maxLength: {
+                  value: 16,
+                  message: "Password must between 8 and 16 characters",
+                },
               })}
             />
             {errors.confPassword && (
