@@ -131,8 +131,28 @@ const countriesLocalisation = [
   },
   {
     name: "DRC",
-    latitude: "-4.0383",
-    longitude: "21.7587",
+    provinces: [
+      {
+        provinceName: "Uvira",
+        latitude: "-3.372884",
+        longitude: "29.144879",
+      },
+      {
+        provinceName: "Nord Kivu",
+        latitude: "-0.791773",
+        longitude: "29.045993",
+      },
+      {
+        provinceName: "Kinshasa",
+        latitude: "-4.32758",
+        longitude: "15.31357",
+      },
+      {
+        provinceName: "Sud Kivu",
+        latitude: "-3.011658",
+        longitude: "28.299435",
+      },
+    ],
   },
   {
     name: "Kenya",
@@ -563,9 +583,53 @@ function Header() {
             )}
           </li>
           <li>
-            <button name="DRC" className="button-menu">
+            <button
+              name="DRC"
+              className="button-menu"
+              onClick={handleMenuClick}
+            >
               DRC
             </button>
+            {isSubmenuOPen && country === "DRC" && (
+              <ul className="submenus">
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Kinshasa"
+                    className="button-submenu"
+                  >
+                    Kinshasa
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Nord Kivu"
+                    className="button-submenu"
+                  >
+                    Nord Kivu
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Sud Kivu"
+                    className="button-submenu"
+                  >
+                    Sud Kivu
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Uvira"
+                    className="button-submenu"
+                  >
+                    Uvira
+                  </button>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <button name="Ouganda" className="button-menu">
