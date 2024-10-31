@@ -1,5 +1,7 @@
 import "../style/signup.scss";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { addUser, getUsers } from "../user_files/users";
 
 function Signup() {
   const {
@@ -8,10 +10,36 @@ function Signup() {
     formState: { errors },
   } = useForm();
 
-  function onSubmit() {
-    alert("bonjpour");
-    console.log("ca marche");
-  }
+  const [userValidationErrors, setUserValidationErrors] = useState("");
+
+  const onSubmit = (data) => {
+    const username = data.username;
+    const email = data.email;
+    const password = data.password;
+    const confPassword = data.confPassword;
+
+    let users = getUsers();
+
+    if (password !== confPassword) {
+      setUserValidationErrors(
+        "Password and Password confirmation must be the same"
+      );
+      return;
+    }
+
+    const newUser = {
+      username: username,
+      email: email,
+      password: password,
+    };
+    const emailExists = users.some((user) => user.email === newUser.email);
+    if (emailExists) {
+      setUserValidationErrors("User with that email already exists");
+      return;
+    }
+    addUser(newUser);
+    console.log(`users are ${getUsers()}`);
+  };
 
   return (
     <div className="card">
@@ -19,7 +47,10 @@ function Signup() {
         <h2>Signup form</h2>
       </div>
       <div className="card-body">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        {userValidationErrors && (
+          <p className="errors">{userValidationErrors}</p>
+        )}
+        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
           <div>
             <label>Username</label>
             <div className="input-field">
@@ -31,6 +62,14 @@ function Signup() {
                     value: /^[a-zA-Z\s]+$/,
                     message:
                       "User name must not contain digit or special characters",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "Username must between 4 and 10 characters",
+                  },
+                  maxLength: {
+                    value: 10,
+                    message: "Username must between 4 and 10 characters",
                   },
                 })}
               />
