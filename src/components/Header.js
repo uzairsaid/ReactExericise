@@ -155,16 +155,6 @@ const countriesLocalisation = [
     ],
   },
   {
-    name: "Kenya",
-    latitude: "-1.2864",
-    longitude: "36.8172",
-  },
-  {
-    name: "Ouganda",
-    latitude: "1.3733",
-    longitude: "32.2903",
-  },
-  {
     name: "Tanzania",
     provinces: [
       { provinceName: "Dodoma", latitude: "-6.161184", longitude: "35.745426" },
@@ -189,12 +179,6 @@ const countriesLocalisation = [
         longitude: "39.19597",
       },
     ],
-  },
-
-  {
-    name: "Somalia",
-    latitude: "5.1521",
-    longitude: "46.1996",
   },
 ];
 
@@ -630,21 +614,6 @@ function Header() {
                 </li>
               </ul>
             )}
-          </li>
-          <li>
-            <button name="Ouganda" className="button-menu">
-              Ouganda
-            </button>
-          </li>
-          <li>
-            <button name="Kenya" className="button-menu">
-              Kenya
-            </button>
-          </li>
-          <li>
-            <button name="Somalia" className="button-menu">
-              Somalia
-            </button>
           </li>
         </ul>
       </div>
