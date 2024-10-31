@@ -22,58 +22,63 @@ function Signup() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label>Username</label>
-
-            <input
-              type="text"
-              {...register("username", {
-                required: "Username is required",
-                pattern: {
-                  value: /^[a-zA-Z\s]+$/,
-                  message:
-                    "User name must not contain digit or special characters",
-                },
-              })}
-            />
+            <div className="input-field">
+              <input
+                type="text"
+                {...register("username", {
+                  required: "Username is required",
+                  pattern: {
+                    value: /^[a-zA-Z\s]+$/,
+                    message:
+                      "User name must not contain digit or special characters",
+                  },
+                })}
+              />
+            </div>
             {errors.username && (
               <p className="errors">{errors.username.message}</p>
             )}
           </div>
           <div>
             <label>E mail</label>
-            <input
-              type="text"
-              {...register("email", {
-                required: "E mail is required",
-                pattern: {
-                  value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
-                  message: "Enter the valid e mail",
-                },
-              })}
-            />
+            <div className="input-field">
+              <input
+                type="text"
+                {...register("email", {
+                  required: "E mail is required",
+                  pattern: {
+                    value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+                    message: "Enter the valid e mail",
+                  },
+                })}
+              />
+            </div>
             {errors.email && <p className="errors">{errors.email.message}</p>}
           </div>
           <div>
             <label>Password</label>
-            <input
-              type="password"
-              {...register("password", {
-                required: "Password is required",
-                pattern: {
-                  value: /^[A-Za-z0-9!@#$%^&*+?]+$/,
-                  message:
-                    "Password must not contain space,curry braces, or parantheses ",
-                },
-                minLength: {
-                  value: 8,
-                  message: "Password must between 8 and 16 characters",
-                },
+            <div className="input-field">
+              <input
+                type="password"
+                {...register("password", {
+                  required: "Password is required",
+                  pattern: {
+                    value: /^[A-Za-z0-9!@#$%^&*+?]+$/,
+                    message:
+                      "Password must not contain space,curry braces, or parantheses ",
+                  },
+                  minLength: {
+                    value: 8,
+                    message: "Password must between 8 and 16 characters",
+                  },
 
-                maxLength: {
-                  value: 16,
-                  message: "Password must between 8 and 16 characters",
-                },
-              })}
-            />
+                  maxLength: {
+                    value: 16,
+                    message: "Password must between 8 and 16 characters",
+                  },
+                })}
+              />
+            </div>
             {errors.password && (
               <p className="errors">{errors.password.message}</p>
             )}
@@ -81,26 +86,28 @@ function Signup() {
 
           <div>
             <label>Confirm password</label>
-            <input
-              type="password"
-              {...register("confPassword", {
-                required: "Password confirmation  is required",
-                pattern: {
-                  value: /^[A-Za-z0-9!@#$%^&*+?]+$/,
-                  message:
-                    "Password must not contain space,curry braces, or parantheses ",
-                },
-                minLength: {
-                  value: 8,
-                  message: "Password must between 8 and 16 characters",
-                },
+            <div className="input-field">
+              <input
+                type="password"
+                {...register("confPassword", {
+                  required: "Password confirmation  is required",
+                  pattern: {
+                    value: /^[A-Za-z0-9!@#$%^&*+?]+$/,
+                    message:
+                      "Password must not contain space,curry braces, or parantheses ",
+                  },
+                  minLength: {
+                    value: 8,
+                    message: "Password must between 8 and 16 characters",
+                  },
 
-                maxLength: {
-                  value: 16,
-                  message: "Password must between 8 and 16 characters",
-                },
-              })}
-            />
+                  maxLength: {
+                    value: 16,
+                    message: "Password must between 8 and 16 characters",
+                  },
+                })}
+              />
+            </div>
             {errors.confPassword && (
               <p className="errors">{errors.confPassword.message}</p>
             )}
