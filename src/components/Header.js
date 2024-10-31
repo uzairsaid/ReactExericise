@@ -146,8 +146,29 @@ const countriesLocalisation = [
   },
   {
     name: "Tanzania",
-    latitude: "-6.3660",
-    longitude: "34.8888",
+    provinces: [
+      { provinceName: "Dodoma", latitude: "-6.161184", longitude: "35.745426" },
+      {
+        provinceName: "Kigoma",
+        latitude: "-4.8861508",
+        longitude: "29.6383185",
+      },
+      {
+        provinceName: "Arusha",
+        latitude: "-3.386925",
+        longitude: "36.682995",
+      },
+      {
+        provinceName: "Shinyanga",
+        latitude: "-3.680996",
+        longitude: "33.427139",
+      },
+      {
+        provinceName: "Dar es Salaam",
+        latitude: "-6.83523",
+        longitude: "39.19597",
+      },
+    ],
   },
 
   {
@@ -483,9 +504,63 @@ function Header() {
             )}
           </li>
           <li>
-            <button name="Tanzania" className="button-menu">
+            <button
+              name="Tanzania"
+              className="button-menu"
+              onClick={handleMenuClick}
+            >
               Tanzania
             </button>
+            {isSubmenuOPen && country === "Tanzania" && (
+              <ul className="submenus">
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Arusha"
+                    className="button-submenu"
+                  >
+                    Arusha
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Dar es Salaam"
+                    className="button-submenu"
+                  >
+                    Dar es Salaam
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Dodoma"
+                    className="button-submenu"
+                  >
+                    Dodoma
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Kigoma"
+                    className="button-submenu"
+                  >
+                    Kigoma
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    onClick={handleSubMenuClick}
+                    name="Shinyanga"
+                    className="button-submenu"
+                  >
+                    Shinyanga
+                  </button>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <button name="DRC" className="button-menu">
