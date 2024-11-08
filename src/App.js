@@ -12,9 +12,9 @@ function App() {
       <DataProvider>
         <Header />
         <Router>
-          <Link to={"/signup"}>
+          {/* <Link to={"/signup"}>
             Signup<i className="fa-solid fa-right-to-bracket"></i>
-          </Link>
+          </Link> */}
           <Routes>
             <Route path="/signup" Component={Signup} />
             <Route path="/" Component={Home} />
